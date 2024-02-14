@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { MsalService } from '@azure/msal-angular';
 import Iconify from '@iconify/iconify';
 import { ThemeService } from './modules/@shared/services/theme.service';
 
@@ -13,10 +14,12 @@ import { ThemeService } from './modules/@shared/services/theme.service';
 })
 export class AppComponent {
   public title = 'velocity-ui';
+  private msalService = inject(MsalService);
   private themeService = inject(ThemeService);
 
   constructor() {
     Iconify.listIcons();
     this.themeService.init();
+    this.msalService.initialize();
   }
 }

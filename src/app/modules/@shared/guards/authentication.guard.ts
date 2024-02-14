@@ -25,6 +25,7 @@ export class AuthenticationGuard implements CanActivateChild {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
+    console.log('is logged : ', this.authStore.isLogged());
     if (!this.authStore.isLogged()) {
       this.router.navigate(['/auth/sign-in']);
       return false;
