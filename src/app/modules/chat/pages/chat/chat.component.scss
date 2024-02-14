@@ -1,0 +1,11 @@
+#chat {
+  @apply h-full flex flex-col gap-4;
+
+  > article {
+    @apply h-full overflow-y-auto;
+
+    > section {
+      @apply h-[160vh];
+    }
+  }
+}

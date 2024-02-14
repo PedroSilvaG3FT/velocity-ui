@@ -1,0 +1,51 @@
+@import "variables";
+
+#chat-layout {
+  $side-menu-width: 275px;
+
+  @apply h-screen p-0 flex overflow-hidden;
+
+  &.side-menu-close {
+    > aside {
+      @apply w-0 opacity-0;
+    }
+
+    > main {
+      @apply w-full;
+    }
+
+    > button {
+      @apply left-2;
+    }
+  }
+
+  > main,
+  > aside,
+  > button {
+    @apply h-full transition-all duration-700;
+  }
+
+  > aside {
+    @apply overflow-hidden;
+    width: $side-menu-width;
+  }
+
+  > main {
+    @apply relative py-4 overflow-hidden;
+    width: calc(100% - $side-menu-width);
+
+    > article {
+      @apply h-full overflow-auto;
+    }
+  }
+
+  > button {
+    @apply absolute z-[2] top-2/4 w-6 h-6 flex items-center justify-center rounded-full shadow-md opacity-50;
+    background: $bg-secondary;
+    left: calc($side-menu-width + 8px);
+
+    &:hover {
+      @apply opacity-100;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import "palette/index";
+@import "functions/index";
+
+:root {
+  --bg-primary: #fff;
+  --bg-secondary: #f6f6f6;
+  --text-primary: #313131;
+}
+
+// GLOBAL
+$white: #fff;
+$apple-red: #ff5f57;
+$apple-gray: #d9d8d9;
+$apple-green: #00d945;
+$apple-yellow: #fdbd2c;
+$placeholder: #9fa3a7b0;
+$danger: map-get($danger-palette, 500);
+$primary: map-get($primary-palette, 500);
+$secondary: map-get($secondary-palette, 500);
+
+$bg-primary: var(--bg-primary);
+$bg-secondary: var(--bg-secondary);
+$text-primary: var(--text-primary);
+
+// THEME
+$light-bg-primary: #fff;
+$light-bg-secondary: #f6f6f6;
+$light-text-primary: #313131;
+
+$dark-bg-primary: #1c242c;
+$dark-bg-secondary: #111418;
+$dark-text-primary: #fff;
+
+// GRADIENT
+$circular-gradient: radial-gradient(circle, $primary 0%, $secondary 100%);
+$circular-gradient-bg: radial-gradient(
+  circle,
+  $bg-primary 0%,
+  $bg-secondary 100%
+);
+
+// BREAKPOINTS
+$breakpoint-xs: 475px;
+$breakpoint-sm: 640px;
+$breakpoint-md: 890px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;

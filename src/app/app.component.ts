@@ -1,14 +1,22 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import Iconify from '@iconify/iconify';
+import { ThemeService } from './modules/@shared/services/theme.service';
 
 @Component({
-  selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  selector: 'app-root',
+  styleUrl: './app.component.scss',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [CommonModule, RouterOutlet, RouterModule],
 })
 export class AppComponent {
-  title = 'velocity-ui';
+  public title = 'velocity-ui';
+  private themeService = inject(ThemeService);
+
+  constructor() {
+    Iconify.listIcons();
+    this.themeService.init();
+  }
 }

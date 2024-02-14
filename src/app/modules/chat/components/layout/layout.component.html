@@ -1,0 +1,15 @@
+<section id="chat-layout" [class.side-menu-close]="!isSideMenuOpen">
+  <aside>
+    <side-menu />
+  </aside>
+
+  <button (click)="toggleSideMenu()">
+    <i class="iconify" data-icon="ph:caret-left-bold"></i>
+  </button>
+
+  <main class="app-container">
+    <article>
+      <router-outlet></router-outlet>
+    </article>
+  </main>
+</section>

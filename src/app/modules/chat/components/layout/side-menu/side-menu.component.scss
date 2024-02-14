@@ -1,0 +1,6 @@
+@import "variables";
+
+#side-menu {
+  @apply h-full p-6;
+  background: $bg-secondary;
+}

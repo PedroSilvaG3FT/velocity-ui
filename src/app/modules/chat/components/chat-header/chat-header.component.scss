@@ -1,0 +1,7 @@
+#chat-header {
+  @apply py-0  h-full w-full flex items-center justify-between;
+
+  > section {
+    @apply flex gap-4 items-center justify-between;
+  }
+}

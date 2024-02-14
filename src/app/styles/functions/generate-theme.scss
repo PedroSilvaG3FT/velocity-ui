@@ -1,0 +1,17 @@
+@function generate-theme(
+  $primary,
+  $accent,
+  $warn,
+  $background,
+  $foreground,
+  $isDark
+) {
+  @return (
+    warn: $warn,
+    accent: $accent,
+    primary: $primary,
+    is-dark: $isDark,
+    background: $background,
+    foreground: $foreground
+  );
+}

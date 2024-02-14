@@ -1,0 +1,19 @@
+#chat-footer {
+  @apply relative h-[60px];
+
+  > mat-form-field {
+    @apply w-full absolute right-0 bottom-0;
+
+    .mat-mdc-form-field-subscript-wrapper {
+      @apply hidden;
+    }
+
+    .mat-mdc-text-field-wrapper {
+      @apply pr-24;
+    }
+  }
+
+  > article {
+    @apply flex absolute right-4 bottom-4;
+  }
+}

@@ -1,0 +1,20 @@
+<section id="chat-footer">
+  <mat-form-field>
+    <textarea
+      matInput
+      [(ngModel)]="model"
+      name="chat-textarea"
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5"
+      #autosize="cdkTextareaAutosize"
+      placeholder="Enter your prompt..."
+      (ngModelChange)="handleModelChange()"
+    ></textarea>
+  </mat-form-field>
+
+  <article>
+    <button>+</button>
+    <button>Submit</button>
+  </article>
+</section>
