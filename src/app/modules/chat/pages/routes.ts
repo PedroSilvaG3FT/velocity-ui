@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
+import { AuthenticationGuard } from '../../@shared/guards/authentication.guard';
 
 export const CHAT_ROUTES: Routes = [
   {
     path: 'chat',
+    canActivateChild: [AuthenticationGuard],
     loadComponent: () =>
       import('../components/layout/layout.component').then(
         (c) => c.LayoutComponent

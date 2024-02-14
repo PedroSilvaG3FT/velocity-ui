@@ -1,0 +1,38 @@
+@import "variables";
+
+#sign-in {
+  @apply min-h-screen flex items-center justify-center;
+
+  > article {
+    @apply flex flex-col items-center w-full max-w-[400px];
+
+    > img {
+      @apply mb-8;
+    }
+
+    > button {
+      @apply my-4 h-12;
+    }
+
+    > button,
+    > app-input {
+      @apply w-full;
+    }
+
+    a:hover {
+      @apply underline;
+    }
+
+    > a {
+      @apply mb-2 flex items-center gap-2;
+    }
+
+    > span {
+      @apply text-center;
+
+      > a {
+        color: $primary;
+      }
+    }
+  }
+}
