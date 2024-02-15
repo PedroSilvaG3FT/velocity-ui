@@ -3,4 +3,8 @@
 #side-menu {
   @apply h-full p-6;
   background: $bg-secondary;
+
+  > article {
+    @apply mt-8;
+  }
 }

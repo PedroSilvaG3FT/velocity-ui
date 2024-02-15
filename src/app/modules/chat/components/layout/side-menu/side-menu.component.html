@@ -1,16 +1,15 @@
 <section id="side-menu">
-  <app-theme-selection />
+  <app-theme-selection class="mb-12" />
 
-  @for (module of chatSetupStore.modules(); track $index) {
   <article>
-    <span class="text-primary">{{ module.name }}</span>
-    <ul>
-      @for (submodule of module.submodules; track $index) {
-      <li (click)="handleSelectSubmodule(module.id, submodule.id)">
-        {{ submodule.name }}
-      </li>
-      }
-    </ul>
+    @for (module of chatSetupStore.modules(); track $index) {
+    <chat-side-menu-item
+      [module]="module"
+      (onSelect)="handleSelectSubmodule($event)"
+      [submoduleId]="chatStore.selectedSubmoduleId()"
+      [isOpen]="module.id === chatStore.selectedModuleId()"
+    />
+
+    }
   </article>
-  }
 </section>

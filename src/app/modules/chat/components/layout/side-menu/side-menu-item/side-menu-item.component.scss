@@ -1,0 +1,38 @@
+@import "variables";
+
+#side-menu-item {
+  @apply w-full;
+
+  .item-action {
+    @apply px-3 h-12 w-full flex gap-2 items-center cursor-pointer rounded-md transition-all duration-500;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  > a {
+    @extend .item-action;
+
+    .arrow {
+      @apply ml-auto;
+    }
+  }
+
+  > ul {
+    @apply overflow-hidden transition-all duration-500;
+
+    &.closed {
+      max-height: 0px !important;
+    }
+
+    > li {
+      @apply pl-8;
+      @extend .item-action;
+
+      &.active {
+        color: $primary;
+      }
+    }
+  }
+}

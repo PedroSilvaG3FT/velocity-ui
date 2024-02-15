@@ -1,0 +1,22 @@
+<article id="side-menu-item">
+  <a (click)="handleToggleOpen()">
+    <i class="iconify" data-icon="streamline:pathfinder-trim"></i>
+    {{ module.name }}
+
+    @if (module.submodules.length) {
+    <i class="iconify arrow" data-icon="ep:arrow-up-bold"></i>
+    }
+  </a>
+
+  <ul [class.closed]="!isOpen" [style.max-height]="maxHeight" #submenu>
+    @for (submodule of module.submodules; track $index) {
+    <li
+      [class.active]="submodule.id === submoduleId"
+      (click)="handleSelectSubmodule(module.id, submodule.id)"
+    >
+      <i class="iconify" data-icon="streamline:pathfinder-trim"></i>
+      {{ submodule.name }}
+    </li>
+    }
+  </ul>
+</article>
