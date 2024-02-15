@@ -2,8 +2,26 @@
   <img src="/assets/images/logo-cbyk.svg" alt="CBYK" />
 
   <section>
-    <app-select label="Language" [items]="languages" />
-    <app-select label="Framework" [items]="frameworks" />
-    <app-select label="IDE" [items]="ides" />
+    <app-select
+      label="Language"
+      [items]="languages"
+      [(ngModel)]="language"
+      [initialValue]="language"
+      (ngModelChange)="handleOptionChange()"
+    />
+    <app-select
+      label="Framework"
+      [items]="frameworks"
+      [(ngModel)]="framework"
+      [initialValue]="framework"
+      (ngModelChange)="handleOptionChange()"
+    />
+    <app-select
+      label="IDE"
+      [items]="ides"
+      [(ngModel)]="ide"
+      [initialValue]="ide"
+      (ngModelChange)="handleOptionChange()"
+    />
   </section>
 </article>

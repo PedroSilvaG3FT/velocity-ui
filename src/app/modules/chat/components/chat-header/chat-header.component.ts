@@ -1,22 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ChatSetupStore } from '../../../../store/chat-setup.store';
+import { ChatStore } from '../../../../store/chat.store';
 import { AppSelectComponent } from '../../../@shared/components/form/app-select/app-select.component';
-import { APP_FRAMEWORKS_ITEMS } from '../../../@shared/constants/frameworks.constant';
-import { APP_IDE_ITEMS } from '../../../@shared/constants/ide.constant';
-import { APP_PROGRAMMING_LANGUAGES_ITEMS } from '../../../@shared/constants/programming-languages.constant';
+import { IFormOption } from '../../../@shared/interfaces/app-form.interface';
+import { IChatSetupOptionsItem } from '../../interfaces/chat-setup.interface';
 
 @Component({
   standalone: true,
   selector: 'chat-header',
-  imports: [AppSelectComponent],
   styleUrl: './chat-header.component.scss',
+  imports: [AppSelectComponent, FormsModule],
   templateUrl: './chat-header.component.html',
 })
 export class ChatHeaderComponent {
-  public readonly ides = APP_IDE_ITEMS;
-  public readonly frameworks = APP_FRAMEWORKS_ITEMS;
-  public readonly languages = APP_PROGRAMMING_LANGUAGES_ITEMS;
+  private chatStore = inject(ChatStore);
+  private chatSetupStore = inject(ChatSetupStore);
+
+  public ides: IFormOption[] = [];
+  public languages: IFormOption[] = [];
+  public frameworks: IFormOption[] = [];
 
   public ide: number = 0;
   public language: number = 0;
   public framework: number = 0;
+
+  public ngOnInit() {
+    this.initOptions();
+  }
+
+  private initOptions() {
+    const _buildOptions = (data: IChatSetupOptionsItem[]): IFormOption[] => {
+      return data.map((item) => ({ label: item.name, value: item.id }));
+    };
+
+    this.ides = _buildOptions(this.chatSetupStore.ides());
+    this.languages = _buildOptions(this.chatSetupStore.languages());
+    this.frameworks = _buildOptions(this.chatSetupStore.frameworks());
+
+    this.ide = this.chatStore.selectedIdeId();
+    this.language = this.chatStore.selectedLanguageId();
+    this.framework = this.chatStore.selectedFrameworkId();
+  }
+
+  public handleOptionChange() {
+    this.chatStore.setIdeId(this.ide);
+    this.chatStore.setLanguageId(this.language);
+    this.chatStore.setFrameworkId(this.framework);
+  }
 }

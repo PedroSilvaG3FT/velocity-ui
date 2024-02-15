@@ -1,3 +1,14 @@
 <section id="side-menu">
   <app-theme-selection />
+
+  @for (item of chatSetupStore.modules(); track $index) {
+  <article>
+    <span class="text-primary">{{ item.name }}</span>
+    <ul>
+      @for (item of item.submodules; track $index) {
+      <li>{{ item.name }}</li>
+      }
+    </ul>
+  </article>
+  }
 </section>
