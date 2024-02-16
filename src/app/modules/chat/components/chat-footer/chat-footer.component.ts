@@ -1,5 +1,12 @@
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { Component, NgZone, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  NgZone,
+  Output,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -16,6 +23,8 @@ import { take } from 'rxjs';
 export class ChatFooterComponent {
   @ViewChild('autosize') autosize!: CdkTextareaAutosize;
 
+  @Output() onSearch = new EventEmitter();
+
   public model: string = ``;
 
   constructor(private _ngZone: NgZone) {}
@@ -26,7 +35,8 @@ export class ChatFooterComponent {
       .subscribe(() => this.autosize.resizeToFitContent(true));
   }
 
-  public handleModelChange() {
-    console.log(this.model);
+  public handleSearch() {
+    this.onSearch.emit(this.model);
+    this.model = '';
   }
 }

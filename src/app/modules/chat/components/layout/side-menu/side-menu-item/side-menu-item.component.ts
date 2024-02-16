@@ -1,52 +1,47 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  booleanAttribute,
-} from '@angular/core';
+import { Component, Input, booleanAttribute, inject } from '@angular/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { Router } from '@angular/router';
+import { ChatStore } from '../../../../../../store/chat.store';
+import { AnimateDirective } from '../../../../../@shared/directives/animate.directive';
 import { IChatSetupModuleItem } from '../../../../interfaces/chat-setup.interface';
 
 @Component({
-  imports: [],
   standalone: true,
   selector: 'chat-side-menu-item',
   styleUrl: './side-menu-item.component.scss',
+  imports: [AnimateDirective, MatTooltipModule],
   templateUrl: './side-menu-item.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SideMenuItemComponent {
-  @Output() onSelect = new EventEmitter<ISideMenuItemSelectedOutput>();
-
-  @Input() submoduleId: number = 0;
   @Input({ transform: booleanAttribute }) isOpen = false;
   @Input({ required: true }) module: IChatSetupModuleItem =
     {} as IChatSetupModuleItem;
 
   public maxHeight: string = '';
 
+  private router = inject(Router);
+  public chatStore = inject(ChatStore);
+
   ngOnInit() {
     const count = this.module.submodules.reduce((acc) => acc + 48, 0);
     this.maxHeight = `${count}px`;
   }
 
-  ngAfterViewInit() {
-    this.checkMaxHeightSubmenu();
-  }
-
-  public handleSelectSubmodule(moduleId: number, submoduleId: number) {
-    this.onSelect.emit({ moduleId, submoduleId });
+  public handleUpdateSelection(moduleId: number, submoduleId: number) {
+    this.chatStore.setModuleId(moduleId);
+    this.chatStore.setSubmoduleId(submoduleId);
   }
 
   public handleToggleOpen() {
     this.isOpen = !this.isOpen;
   }
 
-  private checkMaxHeightSubmenu() {}
-}
+  public handleGoToHistory(moduleId: number, submoduleId: number) {
+    this.handleUpdateSelection(moduleId, submoduleId);
+    this.router.navigate(['/chat/history']);
+  }
 
-export interface ISideMenuItemSelectedOutput {
-  moduleId: number;
-  submoduleId: number;
+  public handleCreateNewChat(moduleId: number, submoduleId: number) {
+    this.handleUpdateSelection(moduleId, submoduleId);
+  }
 }

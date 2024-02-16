@@ -2,10 +2,10 @@
   @apply h-full flex flex-col gap-4;
 
   > article {
-    @apply h-full overflow-y-auto;
+    @apply h-full flex justify-center overflow-y-auto;
 
     > section {
-      @apply h-[160vh];
+      @apply max-w-[48rem];
     }
   }
 }

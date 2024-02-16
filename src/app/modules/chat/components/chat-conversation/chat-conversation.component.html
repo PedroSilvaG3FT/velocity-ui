@@ -1,0 +1,11 @@
+<article id="chat-conversation">
+  @for (item of messages; track $index) {
+  <ng-container>
+    @if (item.Role === botMessageRole) {
+    <chat-bot-message [message]="item" />
+    } @else {
+    <chat-user-message [message]="item" />
+    }
+  </ng-container>
+  }
+</article>

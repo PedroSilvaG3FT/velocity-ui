@@ -2,11 +2,9 @@
   <app-theme-selection class="mb-12" />
 
   <article>
-    @for (module of chatSetupStore.modules(); track $index) {
+    @for (module of modules; track module.id) {
     <chat-side-menu-item
       [module]="module"
-      (onSelect)="handleSelectSubmodule($event)"
-      [submoduleId]="chatStore.selectedSubmoduleId()"
       [isOpen]="module.id === chatStore.selectedModuleId()"
     />
 

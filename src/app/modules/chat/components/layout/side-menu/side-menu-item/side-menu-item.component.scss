@@ -33,6 +33,24 @@
       &.active {
         color: $primary;
       }
+
+      &:hover {
+        > section {
+          @apply flex;
+        }
+      }
+
+      > section {
+        @apply ml-auto hidden items-center gap-2;
+
+        > button {
+          @apply transition-all duration-300;
+
+          &:hover {
+            transform: scale(1.3);
+          }
+        }
+      }
     }
   }
 }

@@ -1,1 +1,9 @@
-<p>history works!</p>
+<section id="history">
+  <h1>History from {{ moduleName }} - {{ submoduleName }}</h1>
+
+  <section>
+    @for (item of subjects; track $index) {
+    <article (click)="handleSelectSubject(item)">{{ item.name }}</article>
+    }
+  </section>
+</section>

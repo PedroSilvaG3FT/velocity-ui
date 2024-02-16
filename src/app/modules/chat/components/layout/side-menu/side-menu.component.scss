@@ -1,7 +1,7 @@
 @import "variables";
 
 #side-menu {
-  @apply h-full p-6;
+  @apply h-full p-6 overflow-y-auto;
   background: $bg-secondary;
 
   > article {

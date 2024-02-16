@@ -5,11 +5,11 @@
 
   <article>
     <section>
-      <span>messages</span>
+      <chat-conversation [messages]="messages" />
     </section>
   </article>
 
   <footer>
-    <chat-footer />
+    <chat-footer (onSearch)="handleSearch($event)" />
   </footer>
 </section>

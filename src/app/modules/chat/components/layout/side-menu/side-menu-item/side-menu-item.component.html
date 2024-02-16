@@ -9,13 +9,31 @@
   </a>
 
   <ul [class.closed]="!isOpen" [style.max-height]="maxHeight" #submenu>
-    @for (submodule of module.submodules; track $index) {
-    <li
-      [class.active]="submodule.id === submoduleId"
-      (click)="handleSelectSubmodule(module.id, submodule.id)"
-    >
+    @for (submodule of module.submodules; track submodule.id) {
+    <li [class.active]="submodule.id === chatStore.selectedSubmoduleId()">
       <i class="iconify" data-icon="streamline:pathfinder-trim"></i>
-      {{ submodule.name }}
+
+      <span (click)="handleCreateNewChat(module.id, submodule.id)">
+        {{ submodule.name }} - {{ submodule.id }}
+      </span>
+
+      <section animate animation="animate__fadeInDown">
+        <button
+          matTooltip="History"
+          matTooltipPosition="above"
+          (click)="handleGoToHistory(module.id, submodule.id)"
+        >
+          <i class="iconify" data-icon="solar:history-bold-duotone"></i>
+        </button>
+
+        <button
+          matTooltip="New chat"
+          matTooltipPosition="above"
+          (click)="handleCreateNewChat(module.id, submodule.id)"
+        >
+          <i class="iconify" data-icon="line-md:plus"></i>
+        </button>
+      </section>
     </li>
     }
   </ul>

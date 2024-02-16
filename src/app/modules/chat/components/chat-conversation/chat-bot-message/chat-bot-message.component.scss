@@ -1,0 +1,13 @@
+@import "variables";
+
+#chat-bot-message {
+  > h2 {
+    @apply mb-4;
+    color: $primary;
+  }
+
+  > pre {
+    @apply text-balance p-6 rounded-xl;
+    background: $bg-secondary;
+  }
+}

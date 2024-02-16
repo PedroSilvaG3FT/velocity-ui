@@ -9,12 +9,11 @@
       cdkAutosizeMaxRows="5"
       #autosize="cdkTextareaAutosize"
       placeholder="Enter your prompt..."
-      (ngModelChange)="handleModelChange()"
     ></textarea>
   </mat-form-field>
 
   <article>
     <button>+</button>
-    <button>Submit</button>
+    <button (click)="handleSearch()">Submit</button>
   </article>
 </section>
