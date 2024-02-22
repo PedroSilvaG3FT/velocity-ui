@@ -1,16 +1,14 @@
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
-import { ISubjectMessagesTree } from '../modules/chat/interfaces/chat.interface';
 import { PersistService } from './@persist/persist.service';
 
 const persistService = new PersistService('chat');
 const state = persistService.initState({
   selectedIdeId: 0,
   selectedModuleId: 0,
-  selectedSubjectId: 86,
+  selectedSubjectId: 0,
   selectedLanguageId: 0,
   selectedSubmoduleId: 0,
   selectedFrameworkId: 0,
-  subjectMessages: {} as ISubjectMessagesTree,
 });
 
 export const ChatStore = signalStore(

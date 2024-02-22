@@ -21,6 +21,7 @@ import 'prismjs';
 import 'prismjs/components/prism-typescript.min.js';
 import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
+import { StoreService } from './modules/@shared/services/store.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -34,6 +35,7 @@ export const appConfig: ApplicationConfig = {
       },
     }),
 
+    StoreService,
     ChatSetupFacade,
     ...MICROSOFT_PROVIDERS,
   ],

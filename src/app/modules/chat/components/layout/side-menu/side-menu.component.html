@@ -13,7 +13,10 @@
       <button mat-menu-item class="menu-button-item">
         <app-theme-selection />
       </button>
-      <button mat-menu-item class="menu-button-item">Logout</button>
+      <button mat-menu-item class="menu-button-item" (click)="handleLogout()">
+        <mat-icon>logout</mat-icon>
+        Logout
+      </button>
     </mat-menu>
 
     <button [matMenuTriggerFor]="menu">

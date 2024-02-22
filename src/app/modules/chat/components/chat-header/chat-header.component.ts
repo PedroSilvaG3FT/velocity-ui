@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ChatSetupStore } from '../../../../store/chat-setup.store';
 import { ChatStore } from '../../../../store/chat.store';
@@ -25,8 +25,10 @@ export class ChatHeaderComponent {
   public language: number = 0;
   public framework: number = 0;
 
-  public ngOnInit() {
-    this.initOptions();
+  constructor() {
+    effect(() => {
+      this.initOptions();
+    });
   }
 
   private initOptions() {

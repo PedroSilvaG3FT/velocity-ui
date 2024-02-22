@@ -11,12 +11,14 @@ import { IUserData } from '../modules/@shared/interfaces/user.interface';
 import { PersistService } from './@persist/persist.service';
 
 const persistService = new PersistService('auth');
-const state = persistService.initState({
+const initialState = {
   token: '',
   tokenType: '',
   userData: {} as IUserData,
   microsoftUser: {} as AuthenticationResult,
-});
+};
+
+const state = persistService.initState(initialState);
 
 export const AuthStore = signalStore(
   { providedIn: 'root' },
@@ -63,6 +65,10 @@ export const AuthStore = signalStore(
     },
     setMicrosoftUser(microsoftUser: AuthenticationResult) {
       patchState(store, { microsoftUser });
+      persistService.commit(store, state);
+    },
+    reset() {
+      patchState(store, { ...initialState });
       persistService.commit(store, state);
     },
   }))
