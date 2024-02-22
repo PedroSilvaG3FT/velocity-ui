@@ -1,6 +1,9 @@
 <article id="side-menu-item">
   <a (click)="handleToggleOpen()">
-    <i class="iconify" data-icon="streamline:pathfinder-trim"></i>
+    <i
+      class="iconify"
+      [attr.data-icon]="modulesIcons[module.name] || defaultIcon"
+    ></i>
     {{ module.name }}
 
     @if (module.submodules.length) {
@@ -13,7 +16,10 @@
   <ul [class.closed]="!isOpen" [style.max-height]="maxHeight" #submenu>
     @for (submodule of module.submodules; track submodule.id) {
     <li [class.active]="submodule.id === chatStore.selectedSubmoduleId()">
-      <i class="iconify" data-icon="streamline:pathfinder-trim"></i>
+      <i
+        class="iconify"
+        [attr.data-icon]="submodulesIcons[submodule.name] || defaultIcon"
+      ></i>
 
       <span (click)="handleCreateNewChat(module.id, submodule.id)">
         {{ submodule.name }}

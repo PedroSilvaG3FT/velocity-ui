@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { AuthStore } from '../../../../../../store/auth.store';
 import { ChatStore } from '../../../../../../store/chat.store';
 import { AnimateDirective } from '../../../../../@shared/directives/animate.directive';
+import { MODULES_ICONS } from '../../../../constants/modules-icon.contant';
+import { SUBMODULES_ICONS } from '../../../../constants/submodules-icon.constant';
 import { IChatSetupModuleItem } from '../../../../interfaces/chat-setup.interface';
 import { ChatService } from '../../../../services/chat.service';
 import { ModalSubjectComponent } from '../../../modal-subject/modal-subject.component';
@@ -29,6 +31,10 @@ export class SideMenuItemComponent {
   public authStore = inject(AuthStore);
   public chatStore = inject(ChatStore);
   public chatService = inject(ChatService);
+
+  public modulesIcons: { [key: string]: string } = MODULES_ICONS;
+  public submodulesIcons: { [key: string]: string } = SUBMODULES_ICONS;
+  public readonly defaultIcon: string = 'streamline:pathfinder-trim';
 
   constructor(public matDialog: MatDialog) {}
 
@@ -66,7 +72,7 @@ export class SideMenuItemComponent {
             this.chatStore.setSubjectId(response.id);
             this.handleUpdateSelection(moduleId, idSubModule);
 
-            console.log('RESPONSE : ', response);
+            this.router.navigate(['/chat']);
           },
           error: (error) => {
             console.log('ERROR : ', error);
