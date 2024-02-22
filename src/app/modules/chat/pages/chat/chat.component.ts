@@ -26,6 +26,9 @@ import { ChatService } from '../../services/chat.service';
   ],
 })
 export class ChatComponent {
+  @ViewChild('conversationComponent', { read: ChatConversationComponent })
+  chatConversationComponent!: ChatConversationComponent;
+
   @ViewChild('conversationContainer', { static: false })
   conversationContainerEl!: ElementRef;
 
@@ -39,15 +42,6 @@ export class ChatComponent {
   private authStore = inject(AuthStore);
   private chatStore = inject(ChatStore);
   private chatService = inject(ChatService);
-
-  public typingEffectFunction: Function = () => {
-    setTimeout(() => {
-      if (this.conversationContainerEl) {
-        const element = this.conversationContainerEl.nativeElement;
-        element.scrollTop = element.scrollHeight;
-      }
-    }, 750);
-  };
 
   constructor() {
     effect(() => {
@@ -67,7 +61,6 @@ export class ChatComponent {
   }
 
   private init() {
-    console.log('GET SUBMODULES :', this.submoduleId);
     this.getMessages();
   }
 
@@ -95,7 +88,7 @@ export class ChatComponent {
     this.messages.push({ role: 'system', content: prompt });
     this.isLoading = true;
 
-    this.onMessageCreated();
+    this.handleScrollDown();
 
     this.chatService
       .sendMessage({
@@ -113,18 +106,29 @@ export class ChatComponent {
           this.isLoading = false;
           this.messages.push({ role: 'assistant', content });
 
-          this.onMessageCreated();
+          this.scrollToLastMessage();
         },
         error: (error) => {
-          const errorMessage = error.message;
-
           console.log('ERROR :', error);
           this.isLoading = false;
         },
       });
   }
 
-  public onMessageCreated() {
-    this.typingEffectFunction();
+  public handleScrollDown(position: number | null = null) {
+    setTimeout(() => {
+      if (this.conversationContainerEl) {
+        const element = this.conversationContainerEl.nativeElement;
+        element.scrollTop = position || element.scrollHeight;
+      }
+    }, 750);
+  }
+
+  public scrollToLastMessage() {
+    const position =
+      this.chatConversationComponent.getScrollPositionLastMessage();
+
+    if (position) this.handleScrollDown(position - 110);
+    else this.handleScrollDown();
   }
 }

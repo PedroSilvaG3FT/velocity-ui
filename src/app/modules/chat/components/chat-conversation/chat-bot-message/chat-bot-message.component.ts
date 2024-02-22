@@ -11,7 +11,6 @@ import { ISendMessageItem } from '../../../interfaces/chat.interface';
   imports: [MarkdownComponent, TypingEffectDirective],
 })
 export class ChatBotMessageComponent {
-  @Input({ required: true }) typingEffectFunction: Function = () => {};
   @Input({ required: true }) message: ISendMessageItem = {} as ISendMessageItem;
 
   public handleCopy() {

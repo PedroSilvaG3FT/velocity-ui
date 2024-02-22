@@ -6,9 +6,9 @@
   <article #conversationContainer>
     <section>
       <chat-conversation
+        #conversationComponent
         [messages]="messages"
         [loading]="isLoading"
-        [typingEffectFunction]="typingEffectFunction"
       />
     </section>
   </article>
