@@ -23,6 +23,6 @@ export class AppComponent {
     this.themeService.init();
     this.msalService.initialize();
 
-    console.warn(`enviroment production ${environment.production}`);
+    console.warn(`enviroments`, environment);
   }
 }
