@@ -9,7 +9,7 @@
     @apply grid gap-2 grid-cols-5 items-stretch;
 
     > article {
-      @apply flex items-center justify-center p-6 rounded-xl cursor-pointer transition-all duration-500;
+      @apply text-center flex items-center justify-center p-6 rounded-xl cursor-pointer transition-all duration-500;
       background: $bg-secondary;
 
       &:hover {

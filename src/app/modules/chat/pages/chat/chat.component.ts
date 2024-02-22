@@ -70,10 +70,9 @@ export class ChatComponent {
         const cloneMessages = ObjectUtil.clone(response);
 
         this.messagesData = response;
-        this.messages = cloneMessages.map((item) => ({
-          role: item.Role,
-          content: item.Content,
-        }));
+        this.messages = cloneMessages
+          .map((item) => ({ role: item.Role, content: item.Content }))
+          .filter((item) => !!item.content);
 
         console.log('RESPONSE : ', response);
         console.log('MESSAGES : ', this.messages);
