@@ -4,6 +4,11 @@ export interface ICreateSubject {
   nameSubject: string;
 }
 
+export interface ICreateSubjectResponse {
+  id: number;
+  success: string;
+}
+
 export interface ISubjectResponse {
   ID: number;
   Name: string;
@@ -28,6 +33,10 @@ export interface ISendMessage {
   idSubModule: number;
   idFramework: number;
   message: ISendMessageItem[];
+}
+
+export interface ISendMessageResponse {
+  content: string;
 }
 
 export interface ISubjectMessagesTree {

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ISendMessageItem } from '../../../interfaces/chat.interface';
 
 @Component({
   imports: [],
@@ -8,5 +9,5 @@ import { Component, Input } from '@angular/core';
   templateUrl: './chat-user-message.component.html',
 })
 export class ChatUserMessageComponent {
-  @Input({ required: true }) message: any = {};
+  @Input({ required: true }) message: ISendMessageItem = {} as ISendMessageItem;
 }

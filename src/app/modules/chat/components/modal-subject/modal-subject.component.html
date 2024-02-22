@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Please enter a subject title</h2>
+
+<mat-dialog-content>
+  <section id="modal-subject">
+    <article>
+      <app-input name="subject" label="Subject" [(ngModel)]="subject" />
+    </article>
+
+    <section>
+      <button mat-button (click)="handleClose()">Close</button>
+      <button mat-raised-button color="primary" (click)="handleClose()">
+        Submit
+      </button>
+    </section>
+  </section>
+</mat-dialog-content>

@@ -5,7 +5,9 @@ import { environment } from '../../../../environments/environment';
 import { ChatFacede } from '../facedes/chat.facede';
 import {
   ICreateSubject,
+  ICreateSubjectResponse,
   ISendMessage,
+  ISendMessageResponse,
   ISubjectItem,
   ISubjectResponse,
 } from '../interfaces/chat.interface';
@@ -17,7 +19,7 @@ export class ChatService {
   constructor(private httpClient: HttpClient) {}
 
   public createSubject(data: ICreateSubject) {
-    return this.httpClient.post(
+    return this.httpClient.post<ICreateSubjectResponse>(
       `${environment.api_url}/subject/send-subject`,
       data
     );
@@ -52,7 +54,7 @@ export class ChatService {
   public sendMessage(data: ISendMessage) {
     const { submoduleName } = this.chatFacede.buildRequestURLParams(data);
 
-    return this.httpClient.post(
+    return this.httpClient.post<ISendMessageResponse>(
       `${environment.api_url}/${submoduleName}/send-${submoduleName}`,
       data
     );

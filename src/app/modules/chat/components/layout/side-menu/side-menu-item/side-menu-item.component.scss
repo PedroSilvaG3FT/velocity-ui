@@ -4,10 +4,10 @@
   @apply w-full;
 
   .item-action {
-    @apply px-3 h-12 w-full flex gap-2 items-center cursor-pointer rounded-md transition-all duration-500;
+    @apply px-3 h-12 w-full flex gap-2 items-center cursor-pointer rounded-md;
 
     &:hover {
-      color: $primary;
+      @apply font-bold;
     }
   }
 
@@ -15,12 +15,18 @@
     @extend .item-action;
 
     .arrow {
-      @apply ml-auto;
+      @apply ml-auto transition-transform duration-300;
+      transform: rotateX(180deg);
+
+      &.open {
+        transform: rotateX(0deg);
+      }
     }
   }
 
   > ul {
-    @apply overflow-hidden transition-all duration-500;
+    @apply overflow-hidden duration-500;
+    transition-property: max-height;
 
     &.closed {
       max-height: 0px !important;
@@ -44,7 +50,7 @@
         @apply ml-auto hidden items-center gap-2;
 
         > button {
-          @apply transition-all duration-300;
+          @apply transition-transform duration-300;
 
           &:hover {
             transform: scale(1.3);

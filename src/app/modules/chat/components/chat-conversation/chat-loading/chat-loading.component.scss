@@ -1,0 +1,15 @@
+@import "variables";
+
+#chat-loading {
+  @apply relative rounded-xl flex items-center justify-center;
+
+  > article {
+    @apply absolute rounded-xl w-full h-full z-[-1] opacity-30;
+    background: $bg-secondary;
+  }
+
+  > i,
+  > svg {
+    @apply text-[5rem] top-2/4 left-2/4;
+  }
+}

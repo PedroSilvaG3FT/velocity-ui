@@ -1,11 +1,23 @@
 #chat {
   @apply h-full flex flex-col gap-4;
 
+  .container-limit {
+    @apply w-full max-w-[48rem];
+  }
+
   > article {
     @apply h-full flex justify-center overflow-y-auto;
 
     > section {
-      @apply max-w-[48rem];
+      @extend .container-limit;
+    }
+  }
+
+  > footer {
+    @apply flex justify-center;
+
+    > section {
+      @extend .container-limit;
     }
   }
 }

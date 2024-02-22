@@ -36,6 +36,9 @@ export class SignInComponent {
   private checkMicrosoftUser(data: AuthenticationResult) {
     this.authenticationService.getUserByEmail(data.account.username).subscribe({
       next: (response) => {
+        this.authStore.setToken(data.idToken);
+        this.authStore.setTokenType(data.tokenType);
+
         if (response.email) this.handleMicrosoftSignin(response);
         else this.handleMicrosoftSignup(data);
       },

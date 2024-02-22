@@ -25,6 +25,9 @@
     "@iconify/iconify": "^3.1.1",
     "@ngrx/signals": "^17.1.0",
     "animate.css": "^4.1.1",
+    "clipboard": "^2.0.11",
+    "ngx-markdown": "^17.1.1",
+    "prismjs": "^1.29.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"

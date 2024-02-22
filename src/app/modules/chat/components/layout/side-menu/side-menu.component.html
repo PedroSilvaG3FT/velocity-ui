@@ -1,13 +1,24 @@
 <section id="side-menu">
-  <app-theme-selection class="mb-12" />
-
   <article>
     @for (module of modules; track module.id) {
     <chat-side-menu-item
       [module]="module"
       [isOpen]="module.id === chatStore.selectedModuleId()"
     />
-
     }
   </article>
+
+  <footer>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item class="menu-button-item">
+        <app-theme-selection />
+      </button>
+      <button mat-menu-item class="menu-button-item">Logout</button>
+    </mat-menu>
+
+    <button [matMenuTriggerFor]="menu">
+      <i class="iconify" data-icon="mingcute:settings-6-line"></i>
+      <span>{{ authStore.shortUserName() }}</span>
+    </button>
+  </footer>
 </section>

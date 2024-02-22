@@ -3,13 +3,19 @@
     <chat-header />
   </header>
 
-  <article>
+  <article #conversationContainer>
     <section>
-      <chat-conversation [messages]="messages" />
+      <chat-conversation
+        [messages]="messages"
+        [loading]="isLoading"
+        [typingEffectFunction]="typingEffectFunction"
+      />
     </section>
   </article>
 
   <footer>
-    <chat-footer (onSearch)="handleSearch($event)" />
+    <section>
+      <chat-footer (onSearch)="handleSearch($event)" />
+    </section>
   </footer>
 </section>

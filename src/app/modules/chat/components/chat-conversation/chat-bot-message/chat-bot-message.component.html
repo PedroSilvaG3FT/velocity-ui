@@ -1,4 +1,16 @@
 <article id="chat-bot-message">
-  <h2>Velocity</h2>
-  <pre>{{ message.Content }}</pre>
+  <nav>
+    <img src="/assets/images/logo-cbyk.svg" alt="V" />
+    <h2>Velocity</h2>
+  </nav>
+
+  <ng-template #clipboardButton>
+    <button (click)="handleCopy()">copy</button>
+  </ng-template>
+
+  <markdown
+    clipboard
+    [data]="message.content"
+    [clipboardButtonTemplate]="clipboardButton"
+  ></markdown>
 </article>

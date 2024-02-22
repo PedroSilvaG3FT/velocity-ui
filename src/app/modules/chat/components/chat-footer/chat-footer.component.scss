@@ -1,3 +1,5 @@
+@import "variables";
+
 #chat-footer {
   @apply relative h-[60px];
 
@@ -14,6 +16,12 @@
   }
 
   > article {
-    @apply flex absolute right-4 bottom-4;
+    @apply h-full flex items-center absolute right-4;
+
+    > button {
+      @apply flex items-center gap-2 px-4 h-10 rounded-lg;
+      background: $primary;
+      color: $white;
+    }
   }
 }

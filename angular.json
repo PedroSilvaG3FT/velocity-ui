@@ -30,8 +30,11 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.scss",
+              "src/app/styles/custom/markdown-theme.scss",
               "./node_modules/animate.css/animate.min.css",
-              "@angular/material/prebuilt-themes/pink-bluegrey.css"
+              "@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css",
+              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
@@ -40,7 +43,14 @@
                 "src/app/styles/mixins"
               ]
             },
-            "scripts": []
+            "scripts": [
+              "node_modules/prismjs/prism.js",
+              "node_modules/clipboard/dist/clipboard.min.js",
+              "node_modules/prismjs/components/prism-css.min.js",
+              "node_modules/prismjs/components/prism-csharp.min.js",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
+              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js"
+            ]
           },
           "configurations": {
             "production": {

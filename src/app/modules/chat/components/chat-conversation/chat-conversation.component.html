@@ -1,11 +1,20 @@
 <article id="chat-conversation">
   @for (item of messages; track $index) {
   <ng-container>
-    @if (item.Role === botMessageRole) {
-    <chat-bot-message [message]="item" />
+    @if (item.role === botMessageRole) {
+    <chat-bot-message
+      [message]="item"
+      [typingEffectFunction]="typingEffectFunction"
+    />
     } @else {
     <chat-user-message [message]="item" />
     }
   </ng-container>
   }
+
+  <ng-container>
+    @if(loading) {
+    <chat-loading />
+    }
+  </ng-container>
 </article>
