@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { MsalService } from '@azure/msal-angular';
 import Iconify from '@iconify/iconify';
+import { environment } from '../environments/environment';
 import { ThemeService } from './modules/@shared/services/theme.service';
 
 @Component({
@@ -21,5 +22,7 @@ export class AppComponent {
     Iconify.listIcons();
     this.themeService.init();
     this.msalService.initialize();
+
+    console.warn(`enviroment production ${environment.production}`);
   }
 }
