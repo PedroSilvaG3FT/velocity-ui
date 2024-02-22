@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  api_url: `https://api-dev.velocity.cbyk.com.br/api`,
+  api_url: `https://api-dev.velocity.cbyk.com.br/api/chat`,
   microsoft: {
     redirectUri: `/`,
     client_id: `879cc9eb-1db2-4c2c-8024-cc2794d257e9`,
