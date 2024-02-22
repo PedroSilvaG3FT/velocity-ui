@@ -5,7 +5,10 @@
   </nav>
 
   <ng-template #clipboardButton>
-    <button (click)="handleCopy()">copy</button>
+    <button (click)="handleCopy()" id="clipboard-button">
+      <i class="iconify" data-icon="solar:copy-linear"></i>
+      {{ clipboardButtonText }}
+    </button>
   </ng-template>
 
   <markdown

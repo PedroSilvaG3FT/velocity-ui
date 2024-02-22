@@ -13,7 +13,10 @@ import { ISendMessageItem } from '../../../interfaces/chat.interface';
 export class ChatBotMessageComponent {
   @Input({ required: true }) message: ISendMessageItem = {} as ISendMessageItem;
 
+  public clipboardButtonText: string = 'Copy';
+
   public handleCopy() {
-    console.log('HANDLE COPY');
+    this.clipboardButtonText = 'Copied';
+    setTimeout(() => (this.clipboardButtonText = 'Copy'), 2000);
   }
 }
