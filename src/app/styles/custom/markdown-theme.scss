@@ -17,7 +17,6 @@ pre[class*="language-"] {
   text-shadow: none;
 }
 
-/* Code blocks */
 pre[class*="language-"] {
   @apply my-4 p-4 overflow-auto rounded-xl;
 }
@@ -25,6 +24,7 @@ pre[class*="language-"] {
 pre[class*="language-"],
 :not(pre) > code[class*="language-"] {
   background: $bg-secondary;
+  @apply py-8;
 }
 
 :not(pre) > code[class*="language-"] {
